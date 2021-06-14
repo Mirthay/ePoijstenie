@@ -34,8 +34,8 @@ export default {
 dialog {
   position: fixed;
   top: 5vh;
-  left: 10%;
-  width: 80%;
+  left: 5%;
+  width: 90%;
   z-index: 100;
   border-radius: 12px;
   border: none;
@@ -44,6 +44,9 @@ dialog {
   margin: 0;
   overflow: hidden;
   background-color: white;
+  height: auto;
+  max-height: 100%;
+  overflow-y: auto;
 }
 
 header h2 {
