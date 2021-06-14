@@ -3,6 +3,8 @@ import { createStore } from 'vuex';
 const store = createStore({
   state() {
     return {
+      modalWhy: false,
+      modalAbout: false,
       whyMail: {
         title: 'Proč si od nás nechat posílat nabídky a tipy?',
         textUp:
@@ -49,8 +51,29 @@ const store = createStore({
     companySlot(state) {
       return state.companySlot;
     },
-    modal(state) {
-      return state.modal;
+    modalWhy(state) {
+      return state.modalWhy;
+    },
+    modalAbout(state) {
+      return state.modalAbout;
+    }
+  },
+  mutations: {
+    modalAboutUs(state, payload) {
+      state.modalAbout = payload;
+    },
+    modalWhyWe(state, payload) {
+      state.modalWhy = payload;
+    }
+  },
+  actions: {
+    modalAboutUs(context) {
+      context.commit('modalAboutUs');
+      console.log(context);
+    },
+    modalWhyWe(context) {
+      context.commit('modalWhyWe');
+      console.log(context);
     }
   }
 });
