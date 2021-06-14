@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <img :src="src" />
+    <img :src="src" width="150" />
     <h3>{{ name }}</h3>
     <p>{{ ico }}</p>
   </div>
@@ -14,9 +14,8 @@ export default {
 
 <style scoped>
 .container {
-  width: 40%;
-  margin: 10px;
-  padding: 10px;
+  width: 50%;
+  text-align: left;
 }
 h3,
 p {
