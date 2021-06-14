@@ -11,7 +11,7 @@
         :src="com.src"
       ></company-slot>
       <div class="containerBtn">
-        <base-button @click="reloadPage" v-if="modal">Zavřít</base-button>
+        <base-button @click="closeModalAbout" v-if="modal">Zavřít</base-button>
       </div>
     </base-card>
   </div>
@@ -27,14 +27,16 @@ export default {
     const title = ref(store.getters.aboutUs.title);
     const text = ref(store.getters.aboutUs.text);
     const company = ref(store.getters.companySlot);
-    function reloadPage() {
-      window.location.reload();
-    }
+
+    const closeModalAbout = () => {
+      store.commit('modalAboutUs', false);
+    };
+
     return {
       title,
       text,
       company,
-      reloadPage
+      closeModalAbout
     };
   }
 };
