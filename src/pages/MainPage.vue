@@ -1,11 +1,13 @@
 <template>
   <div>
     <base-card>
-      <base-button @click="modalWhy = true"> Modal Proč</base-button>
+      <base-button @click="openModalWhy">
+        Modal Proč?
+      </base-button>
       <base-dialog :show="true" v-if="modalWhy">
         <why-mail :modal="true"></why-mail
       ></base-dialog>
-      <base-button @click="modalAbout = true"> Modal O nás</base-button>
+      <base-button @click="openModalAbout">Modal O nás</base-button>
       <base-dialog :show="true" v-if="modalAbout">
         <about-us :modal="true"></about-us
       ></base-dialog>
@@ -14,16 +16,31 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 import AboutUs from './AboutUs.vue';
 import WhyMail from './WhyMail.vue';
 export default {
   components: { AboutUs, WhyMail },
   setup() {
-    const modalAbout = ref(false);
-    const modalWhy = ref(false);
-    const close = ref(true);
-    return { modalAbout, modalWhy, close };
+    const store = useStore();
+    const modalAbout = computed(() => store.getters.modalAbout);
+    const modalWhy = computed(() => store.getters.modalWhy);
+
+    const openModalAbout = () => {
+      store.commit('modalAboutUs', true);
+    };
+    const openModalWhy = () => {
+      store.commit('modalWhyWe', true);
+    };
+
+    return {
+      modalAbout,
+      modalWhy,
+      store,
+      openModalWhy,
+      openModalAbout
+    };
   }
 };
 </script>
