@@ -13,7 +13,7 @@
       ></company-slot>
       <p>{{ textDown }}</p>
       <div class="containerBtn">
-        <base-button @click="reloadPage" v-if="modal">Zavřít</base-button>
+        <base-button @click="closeModalWhy" v-if="modal">Zavřít</base-button>
       </div>
     </base-card>
   </div>
@@ -24,21 +24,22 @@ import { useStore } from 'vuex';
 import { ref } from 'vue';
 export default {
   props: ['modal'],
+
   setup() {
     const store = useStore();
     const title = ref(store.getters.whyMail.title);
     const textUp = ref(store.getters.whyMail.textUp);
     const textDown = ref(store.getters.whyMail.textDown);
     const company = ref(store.getters.companySlot);
-    function reloadPage() {
-      window.location.reload();
-    }
+    const closeModalWhy = () => {
+      store.commit('modalWhyWe', false);
+    };
     return {
       title,
       textUp,
       textDown,
       company,
-      reloadPage
+      closeModalWhy
     };
   }
 };
