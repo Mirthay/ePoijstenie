@@ -38,7 +38,6 @@ a {
   font: inherit;
   border: 2px solid white;
   cursor: pointer;
-  margin-right: 0.5rem;
   display: inline-block;
   background-color: rgba(44, 147, 255);
   color: rgba(255, 255, 255);
